@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Good morning<h1>
+        <script>
+          alert("Привіт, світ!");
+         
+ let randomNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        document.getElementById('submit').onclick = function() {
+            const userGuess = Number(document.getElementById('guess').value);
+            attempts++;
+
+            if (userGuess === randomNumber) {
+                document.getElementById('result').innerText = `Вірно! Ви вгадали число ${randomNumber} за ${attempts} спроб.`;
+                document.getElementById('restart').style.display = 'block';
+                document.getElementById('submit').disabled = true;
+            } else if (userGuess < randomNumber) {
+                document.getElementById('result').innerText = "Загадане число більше. Спробуйте ще раз.";
+            } else {
+                document.getElementById('result').innerText = "Загадане число менше. Спробуйте ще раз.";
+            }
+        };
+
+        document.getElementById('restart').onclick = function() {
+            randomNumber = Math.floor(Math.random() * 100) + 1;
+            attempts = 0;
+            document.getElementById('result').innerText = "";
+            document.getElementById('guess').value = "";
+            document.getElementById('submit').disabled = false;
+            document.getElementById('restart').style.display = 'none';
+        };
+
+
+        </script>  
+        </body>
+</html>
